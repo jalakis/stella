@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STELLA</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/iosevka-aile/index.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Auth screen -->
+  <div class="auth-screen" id="auth-screen">
+    <div class="auth-card">
+      <h1>STELLA</h1>
+      <p class="auth-subtitle">Sign in to sync your habits across devices</p>
+      <form id="auth-form" autocomplete="on">
+        <input type="email" id="auth-email" placeholder="Email" autocomplete="email" required />
+        <input type="password" id="auth-password" placeholder="Password" autocomplete="current-password" required />
+        <p class="auth-message" id="auth-message"></p>
+        <button type="submit" id="auth-submit">Sign In</button>
+        <button type="button" id="auth-toggle">Need an account? Sign up</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Main app -->
+  <div class="app" id="app" style="display:none">
+    <header>
+      <div class="header-top">
+        <h1>STELLA</h1>
+        <button class="signout-btn" id="signout-btn">Sign out</button>
+      </div>
+      <p class="date" id="today-date"></p>
+    </header>
+
+    <section class="habits-section">
+      <h2>Today</h2>
+      <div class="habits-grid" id="habits-grid"></div>
+    </section>
+
+    <section class="notes-section">
+      <h2>Notes</h2>
+      <textarea id="today-notes" placeholder="Add notes for today..."></textarea>
+    </section>
+
+    <section class="tennis-tip-section">
+      <h2>Tennis Tip of the Day</h2>
+      <div class="tennis-tip-card" id="tennis-tip-card">
+        <svg class="tennis-tip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M5.5 5.5C8 8 8 16 5.5 18.5"/>
+          <path d="M18.5 5.5C16 8 16 16 18.5 18.5"/>
+        </svg>
+        <p id="tennis-tip-text"></p>
+      </div>
+    </section>
+
+    <section class="history-section">
+      <h2>Last 30 Days</h2>
+      <div class="history-container" id="history-container"></div>
+    </section>
+
+    <section class="calendar-section">
+      <div class="calendar-nav">
+        <button class="cal-nav-btn" id="cal-prev">&#8249;</button>
+        <h2 id="cal-month-label" style="margin-bottom:0;flex:1;text-align:center"></h2>
+        <button class="cal-nav-btn" id="cal-next">&#8250;</button>
+      </div>
+      <div class="calendar-grid" id="calendar-grid"></div>
+    </section>
+  </div>
+
+  <div class="modal-overlay" id="cal-modal-overlay">
+    <div class="modal">
+      <div class="modal-header">
+        <span class="modal-date" id="cal-modal-date-label"></span>
+        <button class="modal-close" id="cal-modal-close">✕</button>
+      </div>
+      <div class="cal-modal-entries" id="cal-modal-entries"></div>
+      <div class="cal-modal-form">
+        <input type="text" id="cal-modal-text" placeholder="Add entry..." maxlength="40" />
+        <div class="cal-color-swatches" id="cal-color-swatches"></div>
+        <button class="cal-add-btn" id="cal-modal-add">Add</button>
+      </div>
+      <input type="hidden" id="cal-modal-date" />
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal">
+      <div class="modal-header">
+        <span class="modal-date" id="modal-date"></span>
+        <button class="modal-close" id="modal-close">✕</button>
+      </div>
+      <p class="modal-body" id="modal-body"></p>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="app.js"></script>
+</body>
+</html>
